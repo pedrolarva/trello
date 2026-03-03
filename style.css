@@ -1,0 +1,357 @@
+:root {
+    --bg-color: #0079bf; /* Trello blue */
+    --column-bg: #ebecf0;
+    --card-bg: #ffffff;
+    --text-main: #172b4d;
+    --text-muted: #5e6c84;
+    --primary: #0079bf;
+    --primary-hover: #026aa7;
+    --danger: #eb5a46;
+    --danger-hover: #cf513d;
+    --border-radius: 3px;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent scrolling on body, only in columns */
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    height: 50px;
+}
+
+.app-header h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Board Container */
+.board-container {
+    display: flex;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Custom Scrollbar for board */
+.board-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.board-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.board-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.board-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Columns */
+.column {
+    background-color: var(--column-bg);
+    border-radius: var(--border-radius);
+    width: 272px;
+    min-width: 272px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.column-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.column-title {
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.column-actions {
+    display: flex;
+    gap: 5px;
+    color: var(--text-muted);
+}
+
+.column-actions i {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.column-actions i:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--text-main);
+}
+
+.cards-container {
+    padding: 0 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 20px; /* Space to drag onto empty lists */
+}
+
+/* Custom Scrollbar for cards */
+.cards-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cards-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+    background: rgba(9, 30, 66, 0.2);
+    border-radius: 10px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25);
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+    border-left: 4px solid transparent;
+}
+
+.card:hover {
+    background-color: #f4f5f7;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+.card-desc-indicator {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: none;
+}
+
+.card-desc-indicator.visible {
+    display: inline-block;
+}
+
+.card-actions {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+.card:hover .card-actions {
+    display: flex;
+}
+
+.card-actions i {
+    color: var(--text-muted);
+    padding: 4px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card-actions i:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--text-main);
+}
+
+/* Drag and Drop styles */
+.sortable-ghost {
+    opacity: 0.4;
+    background-color: rgba(9, 30, 66, 0.08) !important;
+}
+
+.sortable-drag {
+    transform: rotate(3deg);
+    cursor: grabbing !important;
+}
+
+/* Buttons */
+.btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-hover);
+}
+
+.add-card-btn {
+    margin: 8px 10px;
+    padding: 8px;
+    color: var(--text-muted);
+    background: transparent;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.add-card-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--text-main);
+}
+
+.add-column-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    min-width: 272px;
+    height: fit-content;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+}
+
+.add-column-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #dfe1e6;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.form-group input[type="color"] {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
