@@ -14,62 +14,62 @@ The project currently has core functionalities implemented:
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
-- **High priority**
-  - Bug fixes for Drag and Drop on mobile devices (touch events).
-  - Add confirmation dialogs before deleting lists or cards.
-- **Medium priority**
-  - Colored labels/tags for cards.
-  - Automatic sorting of cards within a list.
-- **Low priority**
-  - CSS refactoring for better use of variables and maintainability.
+- **High priority (bugs, critical features)**
+  - Bug fixes for Drag and Drop on mobile devices (touch events) - [Issue #1]
+  - Add confirmation dialogs before deleting lists or cards - [Issue #2]
+- **Medium priority (enhancements, improvements)**
+  - Colored labels/tags for cards - [Issue #3]
+  - Automatic sorting of cards within a list - [Issue #4]
+- **Low priority (technical debt, optimizations)**
+  - CSS refactoring for better use of variables and maintainability - [Issue #5]
 
 ### Q2: Data Management and Productivity
-- **High priority**
-  - Export/Import data (JSON) functionality for backups.
-- **Medium priority**
-  - Due dates on cards with visual alerts for overdue tasks.
-  - Search and filter cards by text or label.
-- **Low priority**
-  - DOM manipulation optimization for better performance on large boards.
+- **High priority (bugs, critical features)**
+  - Export/Import data (JSON) functionality for backups - [Issue #6]
+- **Medium priority (enhancements, improvements)**
+  - Due dates on cards with visual alerts for overdue tasks - [Issue #7]
+  - Search and filter cards by text or label - [Issue #8]
+- **Low priority (technical debt, optimizations)**
+  - DOM manipulation optimization for better performance on large boards - [Issue #9]
 
 ### Q3: Advanced Features and Customization
-- **High priority**
-  - Support for multiple boards.
-- **Medium priority**
-  - Theme customization (Dark Mode and color themes).
-  - Markdown support in card descriptions.
-- **Low priority**
-  - Smoother animations when adding or moving items.
+- **High priority (bugs, critical features)**
+  - Support for multiple boards - [Issue #10]
+- **Medium priority (enhancements, improvements)**
+  - Theme customization (Dark Mode and color themes) - [Issue #11]
+  - Markdown support in card descriptions - [Issue #12]
+- **Low priority (technical debt, optimizations)**
+  - Smoother animations when adding or moving items - [Issue #13]
 
 ### Q4: Synchronization and Expansion
-- **High priority**
-  - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
-- **Medium priority**
-  - Simple activity log / history.
-- **Low priority**
-  - Internationalization (i18n) to support multiple languages.
+- **High priority (bugs, critical features)**
+  - Optional Cloud Sync integration using services like Firebase or Supabase - [Issue #14]
+- **Medium priority (enhancements, improvements)**
+  - Simple activity log / history - [Issue #15]
+- **Low priority (technical debt, optimizations)**
+  - Internationalization (i18n) to support multiple languages - [Issue #16]
 
 ## Feature Details
 
-### 1. Export/Import Data
+### 1. Export/Import Data ([Issue #6])
 - **User value proposition:** Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
 - **Technical approach (high-level):** Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
 - **Success criteria:** The user can download the complete data as a JSON file and successfully restore it in a clean session.
 - **Estimated effort:** Small
 
-### 2. Support for Multiple Boards
+### 2. Support for Multiple Boards ([Issue #10])
 - **User value proposition:** Helps in organizing different projects or life areas into completely separate boards.
 - **Technical approach (high-level):** Update the data structure in `localStorage` to support an array of boards, each containing its own lists and cards. Create a sidebar menu or dropdown to switch between boards.
 - **Success criteria:** The user can create, rename, delete, and switch between different boards without data mixing.
 - **Estimated effort:** Large
 
-### 3. Due Dates
+### 3. Due Dates ([Issue #7])
 - **User value proposition:** Allows users to track task deadlines directly on the card.
 - **Technical approach (high-level):** Add a date input field in the card edit modal. Save the date in the card object. Update the card interface to display the date and change color if the deadline is approaching or overdue.
 - **Success criteria:** The user can set a date, view it on the card, and easily identify overdue tasks via visual cues.
 - **Estimated effort:** Medium
 
-### 4. Optional Cloud Sync
+### 4. Optional Cloud Sync ([Issue #14])
 - **User value proposition:** Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality.
 - **Technical approach (high-level):** Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
 - **Success criteria:** Data is automatically and correctly synced between two different devices logged into the same account.
@@ -79,3 +79,20 @@ The project currently has core functionalities implemented:
 - **LocalStorage Limitations:** Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - **Vanilla JS Scalability:** Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - **Mobile Compatibility:** Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+
+[Issue #1]: https://github.com/project/issues/1
+[Issue #2]: https://github.com/project/issues/2
+[Issue #3]: https://github.com/project/issues/3
+[Issue #4]: https://github.com/project/issues/4
+[Issue #5]: https://github.com/project/issues/5
+[Issue #6]: https://github.com/project/issues/6
+[Issue #7]: https://github.com/project/issues/7
+[Issue #8]: https://github.com/project/issues/8
+[Issue #9]: https://github.com/project/issues/9
+[Issue #10]: https://github.com/project/issues/10
+[Issue #11]: https://github.com/project/issues/11
+[Issue #12]: https://github.com/project/issues/12
+[Issue #13]: https://github.com/project/issues/13
+[Issue #14]: https://github.com/project/issues/14
+[Issue #15]: https://github.com/project/issues/15
+[Issue #16]: https://github.com/project/issues/16
