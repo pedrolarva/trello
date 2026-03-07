@@ -14,40 +14,40 @@ The project currently has core functionalities implemented:
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
-- **High priority**
-  - Bug fixes for Drag and Drop on mobile devices (touch events).
-  - Add confirmation dialogs before deleting lists or cards.
-- **Medium priority**
-  - Colored labels/tags for cards.
-  - Automatic sorting of cards within a list.
-- **Low priority**
-  - CSS refactoring for better use of variables and maintainability.
+- **High priority items (bugs, critical features)**
+  - Bug fixes for Drag and Drop on mobile devices (touch events)
+  - Add confirmation dialogs before deleting lists or cards
+- **Medium priority items (enhancements, improvements)**
+  - Colored labels/tags for cards
+  - Automatic sorting of cards within a list
+- **Low priority items (technical debt, optimizations)**
+  - CSS refactoring for better use of variables and maintainability
 
 ### Q2: Data Management and Productivity
-- **High priority**
-  - Export/Import data (JSON) functionality for backups.
-- **Medium priority**
-  - Due dates on cards with visual alerts for overdue tasks.
-  - Search and filter cards by text or label.
-- **Low priority**
-  - DOM manipulation optimization for better performance on large boards.
+- **High priority items (bugs, critical features)**
+  - Export/Import data (JSON) functionality for backups
+- **Medium priority items (enhancements, improvements)**
+  - Due dates on cards with visual alerts for overdue tasks
+  - Search and filter cards by text or label
+- **Low priority items (technical debt, optimizations)**
+  - DOM manipulation optimization for better performance on large boards
 
 ### Q3: Advanced Features and Customization
-- **High priority**
-  - Support for multiple boards.
-- **Medium priority**
-  - Theme customization (Dark Mode and color themes).
-  - Markdown support in card descriptions.
-- **Low priority**
-  - Smoother animations when adding or moving items.
+- **High priority items (bugs, critical features)**
+  - Support for multiple boards
+- **Medium priority items (enhancements, improvements)**
+  - Theme customization (Dark Mode and color themes)
+  - Markdown support in card descriptions
+- **Low priority items (technical debt, optimizations)**
+  - Smoother animations when adding or moving items
 
 ### Q4: Synchronization and Expansion
-- **High priority**
-  - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
-- **Medium priority**
-  - Simple activity log / history.
-- **Low priority**
-  - Internationalization (i18n) to support multiple languages.
+- **High priority items (bugs, critical features)**
+  - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage
+- **Medium priority items (enhancements, improvements)**
+  - Simple activity log / history
+- **Low priority items (technical debt, optimizations)**
+  - Internationalization (i18n) to support multiple languages
 
 ## Feature Details
 
@@ -75,7 +75,7 @@ The project currently has core functionalities implemented:
 - **Success criteria:** Data is automatically and correctly synced between two different devices logged into the same account.
 - **Estimated effort:** Large
 
-## Dependencies & Risks
+## Dependencies & Risks (blockers or concerns)
 - **LocalStorage Limitations:** Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - **Vanilla JS Scalability:** Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - **Mobile Compatibility:** Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
