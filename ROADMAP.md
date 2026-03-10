@@ -14,39 +14,39 @@ The project currently has core functionalities implemented:
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Bug fixes for Drag and Drop on mobile devices (touch events).
   - Add confirmation dialogs before deleting lists or cards.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Colored labels/tags for cards.
   - Automatic sorting of cards within a list.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Export/Import data (JSON) functionality for backups.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Due dates on cards with visual alerts for overdue tasks.
   - Search and filter cards by text or label.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - DOM manipulation optimization for better performance on large boards.
 
 ### Q3: Advanced Features and Customization
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Support for multiple boards.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Theme customization (Dark Mode and color themes).
   - Markdown support in card descriptions.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Simple activity log / history.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - Internationalization (i18n) to support multiple languages.
 
 ## Feature Details
