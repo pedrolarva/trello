@@ -15,65 +15,69 @@ The project currently has core functionalities implemented:
 
 ### Q1: User Experience (UX) and Stability
 - **High priority**
-  - Bug fixes for Drag and Drop on mobile devices (touch events).
-  - Add confirmation dialogs before deleting lists or cards.
+  - Bug fixes for Drag and Drop on mobile devices (touch events). [#1]
+  - Add confirmation dialogs before deleting lists or cards. [#2]
 - **Medium priority**
-  - Colored labels/tags for cards.
-  - Automatic sorting of cards within a list.
+  - Colored labels/tags for cards. [#3]
+  - Automatic sorting of cards within a list. [#4]
 - **Low priority**
-  - CSS refactoring for better use of variables and maintainability.
+  - CSS refactoring for better use of variables and maintainability. [#5]
 
 ### Q2: Data Management and Productivity
 - **High priority**
-  - Export/Import data (JSON) functionality for backups.
+  - Export/Import data (JSON) functionality for backups. [#6]
 - **Medium priority**
-  - Due dates on cards with visual alerts for overdue tasks.
-  - Search and filter cards by text or label.
+  - Due dates on cards with visual alerts for overdue tasks. [#7]
+  - Search and filter cards by text or label. [#8]
 - **Low priority**
-  - DOM manipulation optimization for better performance on large boards.
+  - DOM manipulation optimization for better performance on large boards. [#9]
 
 ### Q3: Advanced Features and Customization
 - **High priority**
-  - Support for multiple boards.
+  - Support for multiple boards. [#10]
 - **Medium priority**
-  - Theme customization (Dark Mode and color themes).
-  - Markdown support in card descriptions.
+  - Theme customization (Dark Mode and color themes). [#11]
+  - Markdown support in card descriptions. [#12]
 - **Low priority**
-  - Smoother animations when adding or moving items.
+  - Smoother animations when adding or moving items. [#13]
 
 ### Q4: Synchronization and Expansion
 - **High priority**
-  - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage. [#14]
 - **Medium priority**
-  - Simple activity log / history.
+  - Simple activity log / history. [#15]
 - **Low priority**
-  - Internationalization (i18n) to support multiple languages.
+  - Internationalization (i18n) to support multiple languages. [#16]
 
 ## Feature Details
 
-### 1. Export/Import Data
-- **User value proposition:** Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
+### 1. Export/Import Data [#6]
+- **User value proposition:** Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared. Focus on incremental value delivery.
 - **Technical approach (high-level):** Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
 - **Success criteria:** The user can download the complete data as a JSON file and successfully restore it in a clean session.
 - **Estimated effort:** Small
+- **Dependencies & Risks:** LocalStorage limitations and format compatibility.
 
-### 2. Support for Multiple Boards
-- **User value proposition:** Helps in organizing different projects or life areas into completely separate boards.
+### 2. Support for Multiple Boards [#10]
+- **User value proposition:** Helps in organizing different projects or life areas into completely separate boards. Focus on incremental value delivery.
 - **Technical approach (high-level):** Update the data structure in `localStorage` to support an array of boards, each containing its own lists and cards. Create a sidebar menu or dropdown to switch between boards.
 - **Success criteria:** The user can create, rename, delete, and switch between different boards without data mixing.
 - **Estimated effort:** Large
+- **Dependencies & Risks:** Increased state complexity, Vanilla JS scalability.
 
-### 3. Due Dates
-- **User value proposition:** Allows users to track task deadlines directly on the card.
+### 3. Due Dates [#7]
+- **User value proposition:** Allows users to track task deadlines directly on the card. Focus on incremental value delivery.
 - **Technical approach (high-level):** Add a date input field in the card edit modal. Save the date in the card object. Update the card interface to display the date and change color if the deadline is approaching or overdue.
 - **Success criteria:** The user can set a date, view it on the card, and easily identify overdue tasks via visual cues.
 - **Estimated effort:** Medium
+- **Dependencies & Risks:** None specific to this feature.
 
-### 4. Optional Cloud Sync
-- **User value proposition:** Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality.
+### 4. Optional Cloud Sync [#14]
+- **User value proposition:** Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality. Focus on incremental value delivery.
 - **Technical approach (high-level):** Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
 - **Success criteria:** Data is automatically and correctly synced between two different devices logged into the same account.
 - **Estimated effort:** Large
+- **Dependencies & Risks:** Dependency on external BaaS (Firebase/Supabase), complexity in offline/online sync and conflict resolution.
 
 ## Dependencies & Risks
 - **LocalStorage Limitations:** Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
