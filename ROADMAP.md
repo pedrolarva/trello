@@ -14,39 +14,39 @@ The project currently has core functionalities implemented:
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Bug fixes for Drag and Drop on mobile devices (touch events).
   - Add confirmation dialogs before deleting lists or cards.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Colored labels/tags for cards.
   - Automatic sorting of cards within a list.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Export/Import data (JSON) functionality for backups.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Due dates on cards with visual alerts for overdue tasks.
   - Search and filter cards by text or label.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - DOM manipulation optimization for better performance on large boards.
 
 ### Q3: Advanced Features and Customization
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Support for multiple boards.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Theme customization (Dark Mode and color themes).
   - Markdown support in card descriptions.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
-- **High priority**
+- **High priority items (bugs, critical features)**
   - Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
-- **Medium priority**
+- **Medium priority items (enhancements, improvements)**
   - Simple activity log / history.
-- **Low priority**
+- **Low priority items (technical debt, optimizations)**
   - Internationalization (i18n) to support multiple languages.
 
 ## Feature Details
@@ -56,24 +56,28 @@ The project currently has core functionalities implemented:
 - **Technical approach (high-level):** Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
 - **Success criteria:** The user can download the complete data as a JSON file and successfully restore it in a clean session.
 - **Estimated effort:** Small
+- **Dependencies & Risks - Any blockers or concerns:** Local storage size limit (5MB); manual backup relies on user action.
 
 ### 2. Support for Multiple Boards
 - **User value proposition:** Helps in organizing different projects or life areas into completely separate boards.
 - **Technical approach (high-level):** Update the data structure in `localStorage` to support an array of boards, each containing its own lists and cards. Create a sidebar menu or dropdown to switch between boards.
 - **Success criteria:** The user can create, rename, delete, and switch between different boards without data mixing.
 - **Estimated effort:** Large
+- **Dependencies & Risks - Any blockers or concerns:** Increased complexity in local storage state management.
 
 ### 3. Due Dates
 - **User value proposition:** Allows users to track task deadlines directly on the card.
 - **Technical approach (high-level):** Add a date input field in the card edit modal. Save the date in the card object. Update the card interface to display the date and change color if the deadline is approaching or overdue.
 - **Success criteria:** The user can set a date, view it on the card, and easily identify overdue tasks via visual cues.
 - **Estimated effort:** Medium
+- **Dependencies & Risks - Any blockers or concerns:** Requires accurate timezone handling.
 
 ### 4. Optional Cloud Sync
 - **User value proposition:** Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality.
 - **Technical approach (high-level):** Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
 - **Success criteria:** Data is automatically and correctly synced between two different devices logged into the same account.
 - **Estimated effort:** Large
+- **Dependencies & Risks - Any blockers or concerns:** Dependency on third-party BaaS availability; complex offline-first conflict resolution.
 
 ## Dependencies & Risks
 - **LocalStorage Limitations:** Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
