@@ -3,59 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban Board</title>
+    <title>Trello Clone</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="app-header">
-        <h1><i class="fab fa-trello"></i> Meu Kanban</h1>
-        <button id="add-board-btn" class="btn"><i class="fas fa-plus"></i> Novo Quadro</button>
+    <!-- Header -->
+    <header class="app-header" id="app-header">
+        <div class="header-left">
+            <button class="header-btn" id="boards-btn" title="Boards">
+                <i class="fab fa-trello"></i> <span class="header-btn-text">Boards</span>
+            </button>
+        </div>
+        <div class="header-center">
+            <span class="header-logo"><i class="fab fa-trello"></i> Trello</span>
+        </div>
+        <div class="header-right">
+            <div class="header-search" id="header-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Buscar..." autocomplete="off">
+            </div>
+            <div class="header-avatar" id="header-avatar" title="Usuário">U</div>
+        </div>
     </header>
 
-    <main class="board-container" id="board-container">
-        <!-- Columns will be generated here by JavaScript -->
-    </main>
-
-    <!-- Modal for adding/editing cards -->
-    <div id="card-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="modal-title">Adicionar Cartão</h2>
-            <form id="card-form">
-                <input type="hidden" id="card-id">
-                <input type="hidden" id="column-id">
-                <div class="form-group">
-                    <label for="card-title-input">Título</label>
-                    <input type="text" id="card-title-input" required placeholder="Digite o título do cartão">
-                </div>
-                <div class="form-group">
-                    <label for="card-desc-input">Descrição</label>
-                    <textarea id="card-desc-input" rows="4" placeholder="Adicione uma descrição mais detalhada..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="card-color-input">Cor (opcional)</label>
-                    <input type="color" id="card-color-input" value="#ffffff">
-                </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
+    <!-- Sub-header (board view only) -->
+    <div class="board-sub-header" id="board-sub-header" style="display:none;">
+        <div class="sub-header-left">
+            <span class="board-title-display" id="board-title-display"></span>
+            <button class="star-btn" id="star-btn" title="Favoritar">
+                <i class="far fa-star"></i>
+            </button>
+            <span class="sub-header-sep">|</span>
+        </div>
+        <div class="sub-header-right">
+            <button class="header-btn sub-header-btn" id="board-menu-btn">
+                <i class="fas fa-ellipsis-h"></i> Menu
+            </button>
         </div>
     </div>
 
-    <!-- Modal for adding/editing columns -->
-    <div id="column-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="column-modal-title">Adicionar Lista</h2>
-            <form id="column-form">
-                <input type="hidden" id="edit-column-id">
-                <div class="form-group">
-                    <label for="column-title-input">Título da Lista</label>
-                    <input type="text" id="column-title-input" required placeholder="Digite o título da lista">
+    <!-- Home Screen -->
+    <main class="home-screen" id="home-screen" style="display:none;">
+        <div class="home-content">
+            <h2 class="home-title"><i class="far fa-clock"></i> Quadros recentes</h2>
+            <div class="boards-grid" id="boards-grid">
+                <!-- Board cards rendered by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Board View -->
+    <main class="board-view" id="board-view" style="display:none;">
+        <div class="board-canvas" id="board-canvas">
+            <!-- Lists rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Card Detail Modal -->
+    <div class="card-detail-overlay" id="card-detail-overlay" style="display:none;">
+        <div class="card-detail-modal" id="card-detail-modal">
+            <div class="card-detail-cover" id="card-detail-cover" style="display:none;"></div>
+            <button class="card-detail-close" id="card-detail-close"><i class="fas fa-times"></i></button>
+            <div class="card-detail-body">
+                <div class="card-detail-main">
+                    <!-- Title -->
+                    <div class="card-detail-header">
+                        <i class="fas fa-credit-card card-detail-icon"></i>
+                        <div class="card-detail-title-area">
+                            <textarea class="card-detail-title" id="card-detail-title" rows="1"></textarea>
+                            <p class="card-detail-list-info" id="card-detail-list-info"></p>
+                        </div>
+                    </div>
+                    <!-- Labels display -->
+                    <div class="card-detail-section" id="card-detail-labels-display" style="display:none;">
+                        <h3 class="card-detail-section-title">Labels</h3>
+                        <div class="card-detail-labels-chips" id="card-detail-labels-chips"></div>
+                    </div>
+                    <!-- Members display -->
+                    <div class="card-detail-section" id="card-detail-members-display" style="display:none;">
+                        <h3 class="card-detail-section-title">Membros</h3>
+                        <div class="card-detail-members-list" id="card-detail-members-list"></div>
+                    </div>
+                    <!-- Due Date display -->
+                    <div class="card-detail-section" id="card-detail-due-display" style="display:none;">
+                        <h3 class="card-detail-section-title">Data de entrega</h3>
+                        <div class="card-detail-due-badge" id="card-detail-due-badge"></div>
+                    </div>
+                    <!-- Description -->
+                    <div class="card-detail-section">
+                        <div class="card-detail-section-header">
+                            <i class="fas fa-align-left card-detail-icon"></i>
+                            <h3 class="card-detail-section-title">Descrição</h3>
+                        </div>
+                        <div class="card-detail-desc-area" id="card-detail-desc-area">
+                            <div class="card-detail-desc-placeholder" id="card-detail-desc-placeholder">Adicione uma descrição mais detalhada...</div>
+                            <div class="card-detail-desc-editor" id="card-detail-desc-editor" style="display:none;">
+                                <textarea id="card-detail-desc-input" rows="4"></textarea>
+                                <div class="desc-editor-actions">
+                                    <button class="btn btn-primary" id="card-detail-desc-save">Salvar</button>
+                                    <button class="btn btn-cancel" id="card-detail-desc-cancel">Cancelar</button>
+                                </div>
+                            </div>
+                            <p class="card-detail-desc-text" id="card-detail-desc-text" style="display:none;"></p>
+                        </div>
+                    </div>
+                    <!-- Checklists -->
+                    <div id="card-detail-checklists"></div>
+                    <!-- Activity / Comments -->
+                    <div class="card-detail-section">
+                        <div class="card-detail-section-header">
+                            <i class="fas fa-list-ul card-detail-icon"></i>
+                            <h3 class="card-detail-section-title">Atividade</h3>
+                        </div>
+                        <div class="comment-input-area">
+                            <div class="comment-avatar">U</div>
+                            <div class="comment-input-wrapper">
+                                <input type="text" id="comment-input" placeholder="Escrever um comentário..." class="comment-input">
+                                <button class="btn btn-primary comment-save-btn" id="comment-save-btn" style="display:none;">Salvar</button>
+                            </div>
+                        </div>
+                        <div class="comments-list" id="comments-list"></div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
+                <div class="card-detail-sidebar">
+                    <h4 class="sidebar-title">Adicionar ao cartão</h4>
+                    <button class="sidebar-btn" id="sidebar-members-btn"><i class="fas fa-user"></i> Membros</button>
+                    <button class="sidebar-btn" id="sidebar-labels-btn"><i class="fas fa-tag"></i> Labels</button>
+                    <button class="sidebar-btn" id="sidebar-checklist-btn"><i class="fas fa-check-square"></i> Checklist</button>
+                    <button class="sidebar-btn" id="sidebar-dates-btn"><i class="fas fa-clock"></i> Dates</button>
+                    <button class="sidebar-btn" id="sidebar-cover-btn"><i class="fas fa-window-maximize"></i> Cover</button>
+                    <h4 class="sidebar-title sidebar-title-actions">Ações</h4>
+                    <button class="sidebar-btn" id="sidebar-move-btn"><i class="fas fa-arrow-right"></i> Mover</button>
+                    <button class="sidebar-btn" id="sidebar-copy-btn"><i class="fas fa-copy"></i> Copiar</button>
+                    <button class="sidebar-btn" id="sidebar-archive-btn"><i class="fas fa-archive"></i> Arquivar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popover container -->
+    <div class="popover-overlay" id="popover-overlay" style="display:none;"></div>
+    <div class="popover" id="popover" style="display:none;">
+        <div class="popover-header">
+            <span class="popover-title" id="popover-title"></span>
+            <button class="popover-close" id="popover-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="popover-body" id="popover-body"></div>
+    </div>
+
+    <!-- Board Menu panel -->
+    <div class="board-menu-panel" id="board-menu-panel" style="display:none;">
+        <div class="board-menu-header">
+            <span>Menu</span>
+            <button class="popover-close" id="board-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="board-menu-body">
+            <button class="board-menu-item" id="board-menu-delete"><i class="fas fa-trash"></i> Excluir quadro</button>
         </div>
     </div>
 
