@@ -10,6 +10,8 @@ The project currently has core functionalities implemented:
 - Drag and Drop functionality to move cards between lists.
 - Data persistence using the browser's `localStorage`.
 - Responsive design with horizontal scrolling.
+- Global configuration variables (e.g., BOARD_COLORS, LABEL_COLORS) externalized in `config.js`.
+- O(1) performance optimizations for card member lookups using map structures.
 
 ## Quarterly Roadmap
 
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Colored labels/tags for cards ([#3](https://github.com/pedrolarva/trello/issues/3))
+- User value proposition: Helps visually categorize and organize cards by priority, project type, or other custom criteria.
+- Technical approach (high-level): Add an array of label identifiers to the card object in `localStorage`. Update the UI to render small colored badges on the cards and provide a color picker in the edit modal.
+- Success criteria: Users can assign multiple colored labels to a card and see them visibly on the board.
+- Estimated effort: Small
+
+### 6. Search and filter cards by text or label ([#8](https://github.com/pedrolarva/trello/issues/8))
+- User value proposition: Allows users to quickly find specific tasks in large boards, improving navigation and productivity.
+- Technical approach (high-level): Implement a search bar that filters the visible DOM elements based on title, description, or labels. Keep track of current filter state.
+- Success criteria: Users can type a query and immediately see only the matching cards, hiding non-matching cards.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
