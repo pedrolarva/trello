@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery. By avoiding heavy frontend frameworks, we prioritize lightweight performance, ease of maintenance, and accessibility for developers of all skill levels.
 
 ## Current Status
 The project currently has core functionalities implemented:
@@ -75,7 +75,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Theme Customization (Dark Mode) ([#11](https://github.com/pedrolarva/trello/issues/11))
+- User value proposition: Reduces eye strain in low-light environments and allows users to personalize their board's appearance to their liking.
+- Technical approach (high-level): Implement CSS variables for all color values. Create a toggle mechanism in the UI that switches a `data-theme` attribute on the `body` element, dynamically updating the CSS variables. Save the user's preference in `localStorage`.
+- Success criteria: The user can toggle between light and dark modes, the UI updates instantly without a page reload, and the preference is remembered across sessions.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
