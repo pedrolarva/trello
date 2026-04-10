@@ -75,7 +75,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Internationalization (i18n) ([#16](https://github.com/pedrolarva/trello/issues/16))
+- User value proposition: Expands the user base by supporting multiple languages.
+- Technical approach (high-level): Implement a dictionary-based translation system and UI to switch languages.
+- Success criteria: All static strings are translatable, and changing the language updates the UI immediately.
+- Estimated effort: Large
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
