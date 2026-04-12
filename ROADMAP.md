@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery, ensuring a lightweight and performant application that just works out of the box.
 
 ## Current Status
 The project currently has core functionalities implemented:
@@ -75,7 +75,14 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
+### 5. Theme Customization ([#11](https://github.com/pedrolarva/trello/issues/11))
+- User value proposition: Provides a more comfortable viewing experience in low-light environments and allows users to personalize the board appearance to their liking.
+- Technical approach (high-level): Implement CSS variables for colors and toggle them via JavaScript. Save the selected theme preference in `localStorage`.
+- Success criteria: The user can switch between light and dark modes, and the preference persists across sessions.
+- Estimated effort: Medium
+
 ## Dependencies & Risks - Any blockers or concerns
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Browser Compatibility: As the application relies heavily on modern CSS and JavaScript features, older browsers may not support some functionalities, requiring polyfills or graceful degradation.
