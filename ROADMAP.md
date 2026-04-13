@@ -40,6 +40,7 @@ The project currently has core functionalities implemented:
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Board Templates for quick project setup.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
@@ -75,7 +76,14 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
+### 5. Board Templates ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Enables users to quickly bootstrap new boards using pre-configured layouts (e.g., Agile Sprint, Weekly Planner), saving time and effort.
+- Technical approach (high-level): Create a predefined set of JSON objects representing template states. When a user selects a template, parse the JSON and merge it with the current `localStorage` state, generating new UUIDs for the template lists and cards.
+- Success criteria: Users can select a template from a predefined list and instantly see a populated board with the appropriate lists and sample cards.
+- Estimated effort: Medium
+
 ## Dependencies & Risks - Any blockers or concerns
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Template Maintenance: Hardcoding templates in vanilla JS might become unmanageable. We may need to host template JSONs externally or build a simple admin interface for them.
