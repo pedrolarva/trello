@@ -13,7 +13,7 @@ The project currently has core functionalities implemented:
 
 ## Quarterly Roadmap
 
-### Q1: User Experience (UX) and Stability
+### Q1
 - High priority items (bugs, critical features)
   - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events).
   - [#2](https://github.com/pedrolarva/trello/issues/2) Add confirmation dialogs before deleting lists or cards.
@@ -23,7 +23,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
-### Q2: Data Management and Productivity
+### Q2
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
 - Medium priority items (enhancements, improvements)
@@ -32,7 +32,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
-### Q3: Advanced Features and Customization
+### Q3
 - High priority items (bugs, critical features)
   - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
 - Medium priority items (enhancements, improvements)
@@ -41,7 +41,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
-### Q4: Synchronization and Expansion
+### Q4
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
@@ -75,7 +75,7 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
