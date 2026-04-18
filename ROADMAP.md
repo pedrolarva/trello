@@ -75,7 +75,15 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+
+### 5. Markdown Support ([#12](https://github.com/pedrolarva/trello/issues/12))
+- User value proposition: Allows users to format text (bold, lists, links) in card descriptions.
+- Technical approach (high-level): Integrate a lightweight markdown parser (like marked.js) or write a custom basic parser for core formatting, and render HTML when viewing a card.
+- Success criteria: User can format description using standard markdown syntax and view it rendered.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Third-party Libraries: If using marked.js for markdown support, it introduces an external dependency which needs careful security review (e.g. sanitizing HTML to prevent XSS) and increases bundle size.
