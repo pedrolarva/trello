@@ -1,10 +1,10 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
+Currently, the project has core functionalities implemented:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
 - Drag and Drop functionality to move cards between lists.
@@ -12,6 +12,7 @@ The project currently has core functionalities implemented:
 - Responsive design with horizontal scrolling.
 
 ## Quarterly Roadmap
+Focuses on incremental value delivery over four quarters.
 
 ### Q1: User Experience (UX) and Stability
 - High priority items (bugs, critical features)
@@ -51,6 +52,8 @@ The project currently has core functionalities implemented:
 
 ## Feature Details
 
+Detailed breakdown of major features.
+
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
 - User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
 - Technical approach (high-level): Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
@@ -75,7 +78,15 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+
+### 5. Colored Labels/Tags for Cards ([#3](https://github.com/pedrolarva/trello/issues/3))
+- User value proposition: Enables users to quickly categorize and visually scan cards using color-coded labels (e.g., bug, feature, urgent).
+- Technical approach (high-level): Add a label selection UI to the card modal. Update the card data structure to store an array of label colors. Render small colored strips on the front of the cards.
+- Success criteria: Users can add multiple colored labels to a card and clearly see them on the board view.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
