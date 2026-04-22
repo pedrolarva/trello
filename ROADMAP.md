@@ -1,10 +1,10 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. The focus is on continuous and incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
+The project currently has the following core functionalities implemented:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
 - Drag and Drop functionality to move cards between lists.
@@ -15,7 +15,7 @@ The project currently has core functionalities implemented:
 
 ### Q1: User Experience (UX) and Stability
 - High priority items (bugs, critical features)
-  - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events).
+  - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events handling).
   - [#2](https://github.com/pedrolarva/trello/issues/2) Add confirmation dialogs before deleting lists or cards.
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
@@ -25,7 +25,7 @@ The project currently has core functionalities implemented:
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
-  - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
+  - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for manual backups.
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
@@ -34,7 +34,7 @@ The project currently has core functionalities implemented:
 
 ### Q3: Advanced Features and Customization
 - High priority items (bugs, critical features)
-  - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
+  - [#10](https://github.com/pedrolarva/trello/issues/10) Support for managing multiple boards.
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
@@ -43,7 +43,7 @@ The project currently has core functionalities implemented:
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
-  - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow seamless multi-device usage.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
@@ -52,7 +52,7 @@ The project currently has core functionalities implemented:
 ## Feature Details
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
-- User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
+- User value proposition: Enables users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
 - Technical approach (high-level): Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
 - Success criteria: The user can download the complete data as a JSON file and successfully restore it in a clean session.
 - Estimated effort: Small
@@ -75,7 +75,7 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
