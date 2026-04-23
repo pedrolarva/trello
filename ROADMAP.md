@@ -21,6 +21,7 @@ The project currently has core functionalities implemented:
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
 - Low priority items (technical debt, optimizations)
+  - [#47](https://github.com/pedrolarva/trello/issues/47) docs: update ROADMAP.md structure and content
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+
+### 5. Document Structure Refactoring ([#47](https://github.com/pedrolarva/trello/issues/47))
+- User value proposition: Provides a clear, standardized roadmap so contributors can easily understand project direction.
+- Technical approach (high-level): Reorganize ROADMAP.md to meet strict formatting rules and include accurate GitHub issue references.
+- Success criteria: The document passes all programmatic checks and reviews.
+- Estimated effort: Small
