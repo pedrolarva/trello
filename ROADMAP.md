@@ -1,9 +1,11 @@
 # Roadmap
 
 ## Vision & Goals
+Our primary purpose is to provide a robust foundation.
 The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
 
 ## Current Status
+We are actively maintaining the core functionalities.
 The project currently has core functionalities implemented:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
@@ -14,6 +16,7 @@ The project currently has core functionalities implemented:
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
+Focusing on core user interactions.
 - High priority items (bugs, critical features)
   - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events).
   - [#2](https://github.com/pedrolarva/trello/issues/2) Add confirmation dialogs before deleting lists or cards.
@@ -24,6 +27,7 @@ The project currently has core functionalities implemented:
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
+Improving data handling.
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
 - Medium priority items (enhancements, improvements)
@@ -33,6 +37,7 @@ The project currently has core functionalities implemented:
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
 ### Q3: Advanced Features and Customization
+Enhancing personalization.
 - High priority items (bugs, critical features)
   - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
 - Medium priority items (enhancements, improvements)
@@ -42,6 +47,7 @@ The project currently has core functionalities implemented:
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
+Preparing for scale.
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
@@ -50,6 +56,7 @@ The project currently has core functionalities implemented:
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
 ## Feature Details
+In-depth view of major planned capabilities:
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
 - User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
@@ -75,7 +82,7 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
+## Dependencies & Risks
+- LocalStorage Capacity Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
