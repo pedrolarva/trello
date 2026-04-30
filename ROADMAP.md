@@ -1,17 +1,18 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and highly responsive interface for personal or small-team task management without the need for complex setups or backends. The core focus is on incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The project currently has the following core functionalities implemented:
+- Create, edit, and safely delete lists (boards).
+- Create, edit, and safely delete cards.
+- Seamless Drag and Drop functionality to move cards between lists.
+- Reliable data persistence using the browser's native `localStorage`.
+- Fully responsive design featuring horizontal scrolling.
 
 ## Quarterly Roadmap
+The following is organized by quarters (Q1, Q2, Q3, Q4) with prioritized items.
 
 ### Q1: User Experience (UX) and Stability
 - High priority items (bugs, critical features)
@@ -50,6 +51,7 @@ The project currently has core functionalities implemented:
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
 ## Feature Details
+For each major feature, we detail the user value proposition, technical approach, success criteria, and estimated effort.
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
 - User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
@@ -75,7 +77,7 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
