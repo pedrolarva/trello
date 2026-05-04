@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. We aim to empower users with an intuitive and highly responsive interface for both personal and small-team task management. By avoiding complex backend setups and relying on incremental value delivery, we ensure that users maintain full ownership of their data while enjoying a frictionless planning experience.
 
 ## Current Status
 The project currently has core functionalities implemented:
@@ -75,7 +75,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Markdown Support in Descriptions ([#12](https://github.com/pedrolarva/trello/issues/12))
+- User value proposition: Enables users to write rich text descriptions (bold, italics, lists, links) within their cards, drastically improving documentation quality and readability.
+- Technical approach: Integrate a lightweight markdown parser (e.g., marked.js or a simple custom regex parser) to safely convert markdown syntax in card descriptions to HTML during rendering, ensuring XSS mitigation.
+- Success criteria: Users can input standard markdown in the description text area, and the saved card displays the properly formatted HTML structure.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
