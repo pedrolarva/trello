@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. We aim to offer an intuitive and highly responsive interface for personal productivity and small-team task management without complex backend setups. Our focus remains on practical, incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The project has successfully implemented the following core functionalities:
+- Create, modify, and delete lists (columns).
+- Create, modify, and delete cards within lists.
+- Smooth Drag and Drop functionality for moving cards across lists.
+- Reliable data persistence leveraging the browser's `localStorage` mechanism.
+- Responsive user interface optimized with horizontal scrolling.
 
 ## Quarterly Roadmap
 
@@ -20,12 +20,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - Implement accessibility improvements for screen readers and keyboard navigation.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
+  - Implement undo/redo functionality for recent actions.
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
@@ -75,7 +77,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+### 5. Undo/Redo Functionality
+- User value proposition: Allows users to quickly revert accidental changes, improving confidence and usability.
+- Technical approach (high-level): Implement an action history stack that stores the inverse of operations, allowing step-by-step state restoration.
+- Success criteria: Users can undo and redo moving cards, deleting items, and editing text using UI buttons or keyboard shortcuts.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- **LocalStorage Limitations**: Browser local storage typically limits data to 5MB and can be inadvertently cleared. Transitioning to IndexedDB may be required for extended usage.
+- **Vanilla JS Scalability**: Building without a frontend framework increases the risk of complex code. Strict architectural patterns are critical to managing state efficiently.
+- **Mobile Compatibility**: The native HTML5 Drag and Drop API often behaves inconsistently on touch devices, which may necessitate polyfills or custom touch event implementations.
