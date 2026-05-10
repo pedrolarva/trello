@@ -13,7 +13,7 @@ The project currently has core functionalities implemented:
 
 ## Quarterly Roadmap
 
-### Q1: User Experience (UX) and Stability
+### Q1
 - High priority items (bugs, critical features)
   - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events).
   - [#2](https://github.com/pedrolarva/trello/issues/2) Add confirmation dialogs before deleting lists or cards.
@@ -23,7 +23,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
-### Q2: Data Management and Productivity
+### Q2
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
 - Medium priority items (enhancements, improvements)
@@ -32,7 +32,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
-### Q3: Advanced Features and Customization
+### Q3
 - High priority items (bugs, critical features)
   - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
 - Medium priority items (enhancements, improvements)
@@ -41,7 +41,7 @@ The project currently has core functionalities implemented:
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
-### Q4: Synchronization and Expansion
+### Q4
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
@@ -75,7 +75,25 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Colored labels/tags for cards ([#3](https://github.com/pedrolarva/trello/issues/3))
+- User value proposition: Visually categorizes cards and allows grouping tasks for faster visual parsing.
+- Technical approach: Update data model to support array of labels per card. Create UI for adding and displaying tags in modal and board view.
+- Success criteria: User can attach and see multiple custom color-coded tags on each card.
+- Estimated effort: Medium
+
+### 6. Search and filter cards ([#8](https://github.com/pedrolarva/trello/issues/8))
+- User value proposition: Rapidly locate specific cards in very populated boards.
+- Technical approach: Implement an input text search box that filters the visible DOM tree based on card titles or labels.
+- Success criteria: Only matching cards are displayed when typing into the search field.
+- Estimated effort: Small
+
+### 7. Markdown support in card descriptions ([#12](https://github.com/pedrolarva/trello/issues/12))
+- User value proposition: Provides rich text formatting so users can better structure detailed requirements.
+- Technical approach: Integrate a lightweight markdown parser (like marked.js) or a vanilla equivalent into the description renderer.
+- Success criteria: Text inputted with markdown syntax correctly renders formatted content in the display view.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
