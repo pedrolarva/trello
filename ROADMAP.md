@@ -1,81 +1,88 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary vision of this project is to provide a simple, lightning-fast, and deeply privacy-focused local-first Kanban board, built entirely with modern vanilla HTML, CSS, and JavaScript. We aim to offer a frictionless, intuitive interface tailored for personal task tracking and small-team collaboration without any heavy backends. Our key focus remains on steady, incremental value delivery to our users.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+Currently, the application features several core capabilities:
+- Create, modify, and safely delete organizational lists (boards).
+- Add, edit, and safely remove individual task cards.
+- Seamless Drag and Drop operations for moving cards between different lists.
+- Reliable offline data persistence via native browser `localStorage`.
+- A fully responsive layout supporting horizontal scroll on smaller screens.
 
 ## Quarterly Roadmap
 
 ### Q1: User Experience (UX) and Stability
 - High priority items (bugs, critical features)
-  - [#1](https://github.com/pedrolarva/trello/issues/1) Bug fixes for Drag and Drop on mobile devices (touch events).
-  - [#2](https://github.com/pedrolarva/trello/issues/2) Add confirmation dialogs before deleting lists or cards.
+  - [#1](https://github.com/pedrolarva/trello/issues/1) Resolve touch event bugs impacting Drag and Drop on mobile devices.
+  - [#2](https://github.com/pedrolarva/trello/issues/2) Implement safety confirmation dialogs prior to list or card deletion.
 - Medium priority items (enhancements, improvements)
-  - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
-  - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - [#3](https://github.com/pedrolarva/trello/issues/3) Introduce colored visual labels and tags for cards.
+  - [#4](https://github.com/pedrolarva/trello/issues/4) Enable automated sorting capabilities for cards within lists.
 - Low priority items (technical debt, optimizations)
-  - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
+  - [#5](https://github.com/pedrolarva/trello/issues/5) Refactor CSS architecture to utilize CSS variables for greater maintainability.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
-  - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
+  - [#6](https://github.com/pedrolarva/trello/issues/6) Introduce JSON Export/Import features for robust local backups.
 - Medium priority items (enhancements, improvements)
-  - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
-  - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - [#7](https://github.com/pedrolarva/trello/issues/7) Add due dates to cards alongside clear visual cues for impending deadlines.
+  - [#8](https://github.com/pedrolarva/trello/issues/8) Build robust text and label-based search and filter functionality.
 - Low priority items (technical debt, optimizations)
-  - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
+  - [#9](https://github.com/pedrolarva/trello/issues/9) Optimize DOM manipulation routines to ensure smooth performance on heavily populated boards.
 
 ### Q3: Advanced Features and Customization
 - High priority items (bugs, critical features)
-  - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
+  - [#10](https://github.com/pedrolarva/trello/issues/10) Introduce full support for managing multiple distinct boards.
 - Medium priority items (enhancements, improvements)
-  - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
-  - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Keyboard Navigation and Shortcuts
+  - [#11](https://github.com/pedrolarva/trello/issues/11) Provide comprehensive theme customization, including Dark Mode.
+  - [#12](https://github.com/pedrolarva/trello/issues/12) Integrate Markdown rendering for rich card descriptions.
 - Low priority items (technical debt, optimizations)
-  - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
+  - [#13](https://github.com/pedrolarva/trello/issues/13) Implement smooth, non-blocking animations for adding or moving UI elements.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
-  - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - [#14](https://github.com/pedrolarva/trello/issues/14) Offer optional Cloud Sync capabilities (via Firebase/Supabase) to support multi-device workflows.
 - Medium priority items (enhancements, improvements)
-  - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - [#15](https://github.com/pedrolarva/trello/issues/15) Introduce a straightforward activity log and board history timeline.
 - Low priority items (technical debt, optimizations)
-  - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
+  - [#16](https://github.com/pedrolarva/trello/issues/16) Establish an i18n architecture to pave the way for multiple language support.
 
 ## Feature Details
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
-- User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
-- Technical approach (high-level): Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
-- Success criteria: The user can download the complete data as a JSON file and successfully restore it in a clean session.
+- User value proposition: Empowers users to manually back up their entire board state or migrate between devices, mitigating the risk of accidental `localStorage` deletion.
+- Technical approach (high-level): Implement serialization logic to download the active `localStorage` state as a JSON file, paired with a file reader utility to restore state from uploaded JSON.
+- Success criteria: Users can reliably export all board data to a local `.json` file and successfully restore it into a blank session without data corruption.
 - Estimated effort: Small
 
 ### 2. Support for Multiple Boards ([#10](https://github.com/pedrolarva/trello/issues/10))
-- User value proposition: Helps in organizing different projects or life areas into completely separate boards.
-- Technical approach (high-level): Update the data structure in `localStorage` to support an array of boards, each containing its own lists and cards. Create a sidebar menu or dropdown to switch between boards.
-- Success criteria: The user can create, rename, delete, and switch between different boards without data mixing.
+- User value proposition: Dramatically improves organization by allowing users to compartmentalize disparate projects and life areas into independent boards.
+- Technical approach (high-level): Refactor the base `localStorage` schema to accommodate an array of board objects. Build an intuitive sidebar or dropdown UI to facilitate board switching.
+- Success criteria: Users must be able to create, rename, safely delete, and rapidly switch between boards while maintaining complete data isolation.
 - Estimated effort: Large
 
 ### 3. Due Dates ([#7](https://github.com/pedrolarva/trello/issues/7))
-- User value proposition: Allows users to track task deadlines directly on the card.
-- Technical approach (high-level): Add a date input field in the card edit modal. Save the date in the card object. Update the card interface to display the date and change color if the deadline is approaching or overdue.
-- Success criteria: The user can set a date, view it on the card, and easily identify overdue tasks via visual cues.
+- User value proposition: Enhances task tracking by providing immediate visibility into impending deadlines directly on the board view.
+- Technical approach (high-level): Extend the card edit modal with a date picker, store the selected timestamp in the card's data object, and implement conditional rendering logic to highlight overdue or impending items.
+- Success criteria: Users can assign a due date to any card, view it at a glance, and rely on color-coded alerts to identify critical deadlines.
 - Estimated effort: Medium
 
 ### 4. Optional Cloud Sync ([#14](https://github.com/pedrolarva/trello/issues/14))
-- User value proposition: Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality.
-- Technical approach (high-level): Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
-- Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
+- User value proposition: Delivers real-time, multi-device continuity while carefully preserving the app's fundamental offline-first capabilities.
+- Technical approach (high-level): Integrate a BaaS solution like Firebase Firestore to intelligently synchronize local state with remote storage when network connectivity is detected, relying on robust conflict resolution.
+- Success criteria: Data modifications automatically and consistently propagate across multiple authenticated devices with minimal latency.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+### 5. Keyboard Navigation and Shortcuts
+- User value proposition: Significantly boosts user efficiency by enabling power users to rapidly navigate and manipulate the board without relying on a mouse.
+- Technical approach (high-level): Bind global and focused event listeners to keydown events to intercept and route standard keyboard shortcuts to core application actions.
+- Success criteria: All primary workflows, including creating lists, adding cards, and moving items, can be seamlessly executed using only keyboard input.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- LocalStorage Limitations: Native browser storage is constrained by a strict quota (usually 5MB) and is vulnerable to accidental data clearing by the user. A future migration to IndexedDB may be necessary for power users.
+- Vanilla JS Scalability: Opting out of modern UI frameworks risks an accumulation of technical debt and complex DOM manipulation code over time. Maintaining a highly disciplined, modular architectural pattern is critical.
+- Mobile Compatibility: Relying on native HTML5 Drag and Drop APIs poses significant cross-browser consistency challenges on touch-based mobile devices, likely requiring custom touch event handling or external polyfills.
