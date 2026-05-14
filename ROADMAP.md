@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery. We aim to empower users by giving them complete control over their task data, offering zero-configuration tools that work reliably without requiring constant internet access. Our primary objective is to maintain a lightweight core while selectively introducing advanced features through local-first principles.
 
 ## Current Status
 The project currently has core functionalities implemented:
@@ -46,6 +46,7 @@ The project currently has core functionalities implemented:
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - Progressive Web App (PWA) support for improved offline capabilities and installability.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Progressive Web App (PWA) Support
+- User value proposition: Allows users to install the application on their desktop or mobile devices for offline access and native app-like experience.
+- Technical approach (high-level): Implement a Service Worker to cache static assets (HTML, CSS, JS) and add a web app manifest file for installability.
+- Success criteria: The app can be installed on home screens and operates fully functionally without an active network connection.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
