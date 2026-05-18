@@ -46,6 +46,7 @@ The project currently has core functionalities implemented:
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - User Authentication (Mock Issue).
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
@@ -75,7 +76,25 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Markdown support in card descriptions ([#12](https://github.com/pedrolarva/trello/issues/12))
+- User value proposition: Enables users to format their task descriptions using rich text (e.g., bold, lists, code blocks), making complex tasks easier to read and understand.
+- Technical approach (high-level): Integrate a lightweight markdown parsing library to convert markdown text into HTML when rendering the card description.
+- Success criteria: The user can type markdown in the description edit mode and see it correctly rendered as HTML when saved.
+- Estimated effort: Small
+
+### 6. Simple activity log / history ([#15](https://github.com/pedrolarva/trello/issues/15))
+- User value proposition: Provides a trail of changes made to cards and boards, giving users context on who did what and when.
+- Technical approach (high-level): Implement a state-tracking mechanism that appends actions (like "Card moved", "Description changed") to an array in the board data object, displaying the recent ones in a slide-out panel.
+- Success criteria: Key actions are reliably logged with timestamps, and users can view the recent history of changes for the board.
+- Estimated effort: Medium
+
+### 7. User Authentication
+- User value proposition: Secure access to the board and enable multi-user collaboration.
+- Technical approach (high-level): Implement JWT based authentication.
+- Success criteria: Users can sign up, log in, and log out securely.
+- Estimated effort: Large
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
