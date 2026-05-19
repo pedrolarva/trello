@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary objective of this project is to develop a lightweight, rapid, and privacy-centric (local-first) web-based Kanban board using solely vanilla HTML, CSS, and JavaScript. We aim to deliver an extremely intuitive and highly responsive interface tailored for personal productivity and small-team task management, completely avoiding complex backend architectures. Our core strategy revolves around continuous, incremental value delivery to our users.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+At present, the application successfully implements all foundational Kanban capabilities:
+- Creation, modification, and deletion of boards (lists).
+- Creation, modification, and deletion of individual task cards.
+- Seamless Drag and Drop mechanics for repositioning cards across different lists.
+- Reliable data persistence leveraging the browser's native `localStorage` API.
+- A fully responsive layout supporting horizontal scrolling for extensive workflows.
 
 ## Quarterly Roadmap
 
@@ -20,6 +20,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - Comprehensive keyboard navigation for accessibility.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
@@ -45,7 +46,7 @@ The project currently has core functionalities implemented:
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
-  - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history to track board changes.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
@@ -75,7 +76,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Comprehensive Keyboard Navigation
+- User value proposition: Improves accessibility and speeds up task management for power users who prefer using the keyboard over the mouse.
+- Technical approach (high-level): Implement global event listeners for keypresses (e.g., arrow keys, Enter, Esc) to navigate between cards, open modals, and close them without mouse interaction.
+- Success criteria: A user can navigate through lists and cards, open a card, and close it using only the keyboard.
+- Estimated effort: Medium
+
+### 6. Activity Log ([#15](https://github.com/pedrolarva/trello/issues/15))
+- User value proposition: Provides transparency and context by allowing users to see a history of changes made to cards and lists over time.
+- Technical approach (high-level): Create an array in the board state to append log objects whenever a significant action (create, move, edit, delete) occurs. Display these logs in a dedicated UI panel.
+- Success criteria: The application accurately records major actions and displays them chronologically in an accessible log view.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
