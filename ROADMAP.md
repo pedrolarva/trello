@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary purpose of this project is to provide a fast, simple, and strictly privacy-focused (local-first) web-based Kanban board. It is built entirely with vanilla HTML, CSS, and JavaScript. Our goal is to offer a highly intuitive and responsive interface tailored for personal task management or small teams, completely eliminating the need for complex server setups or backends. We maintain a strong focus on incremental value delivery over time.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+Currently, the core functionalities of the project are successfully implemented:
+- Creation, editing, and deletion of lists (representing boards).
+- Creation, editing, and deletion of individual task cards.
+- Drag and drop capabilities to seamlessly move cards between different lists.
+- Reliable data persistence utilizing the browser's native `localStorage`.
+- A fully responsive design featuring smooth horizontal scrolling.
 
 ## Quarterly Roadmap
 
@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Archive completed cards to declutter boards without permanently deleting data.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +39,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Keyboard shortcuts for common actions to improve user productivity.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+### 5. Archive Completed Cards
+- User value proposition: Empowers users to hide completed or old tasks without deleting them, keeping the main board clean and organized while retaining historical data.
+- Technical approach (high-level): Add an 'archived' boolean flag to the card object in state. Update the rendering logic to filter out archived cards by default, and provide a separate view or toggle to display them.
+- Success criteria: Users can archive a card, verify it disappears from the active list, and successfully view or unarchive it from an archive view.
+- Estimated effort: Medium
+
+### 6. Keyboard shortcuts for common actions
+- User value proposition: Speeds up interactions for power users by allowing them to create cards, navigate lists, and close modals without using the mouse.
+- Technical approach (high-level): Implement a global keyboard event listener that maps specific key combinations (like 'n' for new card, 'Esc' to close modals) to their respective functions.
+- Success criteria: Users can reliably perform basic actions using documented keyboard shortcuts without breaking standard text input fields.
+- Estimated effort: Small
+
+## Dependencies & Risks
+- **LocalStorage Limitations**: Browser local storage typically has a strict size limit (often around 5MB) and can be inadvertently cleared by the user. If storage requirements grow, migrating to IndexedDB may become necessary.
+- **Vanilla JS Scalability**: Building and maintaining this project without external frameworks could lead to complex and tightly coupled code as the application scales. Establishing a solid architectural pattern is crucial to handle state effectively over time.
+- **Mobile Compatibility & Touch Events**: Relying on native HTML5 Drag and Drop can be unreliable on mobile devices, which may necessitate incorporating touch polyfills or implementing custom touch-based interactions.
