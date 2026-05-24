@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backend configurations. Our focus is squarely on incremental value delivery and keeping the platform highly accessible to all users.
 
 ## Current Status
-The project currently has core functionalities implemented:
+The project is in active development with essential core functionalities already implemented and working:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+- Drag and Drop functionality to seamlessly move cards between lists.
+- Data persistence reliably using the browser's `localStorage`.
+- Responsive design tailored for horizontal scrolling on various screens.
 
 ## Quarterly Roadmap
 
@@ -29,12 +29,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Card Checklists for breaking down tasks.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
 ### Q3: Advanced Features and Customization
 - High priority items (bugs, critical features)
   - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
+  - Board Templates for standardized project setups.
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Card Checklists
+- User value proposition: Enables users to break down complex tasks into smaller, trackable sub-tasks without needing separate cards.
+- Technical approach (high-level): Modify the card data structure to include an array of checklist items. Add UI inside the card modal to add, toggle, and delete checklist items. Update the card cover to show progress (e.g., "2/5").
+- Success criteria: The user can add a checklist to a card, check off items, and see the completion progress on the main board view.
+- Estimated effort: Medium
+
+### 6. Board Templates
+- User value proposition: Provides a quick start for users by offering predefined workflows like "Agile Sprint" or "Weekly Planner", saving setup time.
+- Technical approach (high-level): Create a predefined set of board structures in JSON format. When the user creates a new board, allow them to select a template and populate the lists and sample cards accordingly.
+- Success criteria: The user can select a template when creating a new board, and the board is immediately populated with the template's lists.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
