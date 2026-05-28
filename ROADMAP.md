@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+Our primary goal for this project is to deliver a simple, blazingly fast, and privacy-centric (local-first) web-based Kanban board utilizing purely vanilla HTML, CSS, and JavaScript. We aim to provide an intuitive and highly responsive interface tailored for personal productivity and small-team task management, eliminating the need for complex backend setups. Our focus remains firmly on incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The project currently features a solid foundation with essential core functionalities already implemented:
+- Full CRUD operations for lists (boards).
+- Complete CRUD capabilities for cards.
+- Seamless Drag and Drop functionality for moving cards across lists.
+- Reliable data persistence utilizing the browser's native `localStorage`.
+- A fully responsive design that supports horizontal scrolling.
 
 ## Quarterly Roadmap
 
@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Board Templates for quick project scaffolding.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Board Templates
+- User value proposition: Enables users to quickly scaffold new boards based on predefined structures, saving setup time.
+- Technical approach (high-level): Store template configurations as predefined JSON structures and introduce a template selection step during board creation that initializes `localStorage` with these default layouts.
+- Success criteria: Users can select a template upon board creation and instantly see the predefined lists.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
