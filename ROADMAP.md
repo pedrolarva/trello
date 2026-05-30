@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Archive functionality for cards and lists to declutter the active board view.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +39,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Add Board Templates functionality to initialize common workflows without manual setup.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Archiving Cards and Lists
+- User value proposition: Allows users to hide completed or irrelevant items without permanently deleting them, keeping the main view clean while preserving history.
+- Technical approach (high-level): Add an 'archived' boolean flag to card and list objects in `localStorage`. Modify the rendering logic to filter out archived items by default. Add a separate 'Archive' view or modal to browse, restore, or permanently delete archived items.
+- Success criteria: Users can archive items, they disappear from the main board, and they can be viewed/restored from a dedicated archive section.
+- Estimated effort: Medium
+
+### 6. Board Templates
+- User value proposition: Enables users to quickly create new boards pre-populated with standard lists (e.g., To Do, Doing, Done) or specific workflows (e.g., Agile, Kanban), saving time and effort on initial setup.
+- Technical approach (high-level): Implement a template selection step during new board creation. Store predefined board structures (lists and sample cards) as JSON configurations in the codebase and inject them into `localStorage` upon selection.
+- Success criteria: Users can choose from at least 3 default templates when creating a board, and the board initializes correctly with the corresponding lists.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
