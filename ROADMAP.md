@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The fundamental goal of this project is to create a fast, simple, and strictly privacy-centric (local-first) web-based Kanban application. It is constructed natively using only vanilla HTML, CSS, and JavaScript. We intend to provide a seamless and highly responsive interface tailored for individual task management or small teams, fully eliminating the overhead of complex backend infrastructure. Continuous incremental value delivery is our guiding principle.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+Currently, the software successfully provides the following foundational mechanics:
+- Creation, modification, and deletion of board lists.
+- Generation, editing, and removal of individual task cards.
+- Intuitive drag-and-drop operations to seamlessly transition cards between lists.
+- Robust data persistence relying entirely on the native browser `localStorage` engine.
+- A fully responsive, horizontal-scrolling interface for varying screen sizes.
 
 ## Quarterly Roadmap
 
@@ -38,6 +38,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Task Checklists feature to track subtasks within a card.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -52,30 +53,36 @@ The project currently has core functionalities implemented:
 ## Feature Details
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
-- User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
-- Technical approach (high-level): Create functions to serialize the current `localStorage` state into a `.json` file for download. Create a file input to read a `.json` file and update `localStorage`.
-- Success criteria: The user can download the complete data as a JSON file and successfully restore it in a clean session.
+- User value proposition: Empowers users to manually backup their active boards and easily migrate state between different browsers, safeguarding against accidental `localStorage` wipes.
+- Technical approach (high-level): Implement logic to stringify the active `localStorage` payload into a `.json` format for direct download, and construct a file-reader input to parse incoming `.json` structures back into storage.
+- Success criteria: A user must successfully download their full JSON state archive and flawlessly restore it within an incognito or clean session.
 - Estimated effort: Small
 
 ### 2. Support for Multiple Boards ([#10](https://github.com/pedrolarva/trello/issues/10))
-- User value proposition: Helps in organizing different projects or life areas into completely separate boards.
-- Technical approach (high-level): Update the data structure in `localStorage` to support an array of boards, each containing its own lists and cards. Create a sidebar menu or dropdown to switch between boards.
-- Success criteria: The user can create, rename, delete, and switch between different boards without data mixing.
+- User value proposition: Facilitates parallel tracking by allowing users to cleanly segregate distinct projects, departments, or life domains into independent boards.
+- Technical approach (high-level): Architect a structural upgrade to the `localStorage` schema, migrating to an array-based board structure. Implement a global navigation component (e.g., sidebar or header dropdown) to toggle board contexts.
+- Success criteria: Users can reliably instantiate, relabel, discard, and transition between discrete boards without cross-contamination of list or card data.
 - Estimated effort: Large
 
 ### 3. Due Dates ([#7](https://github.com/pedrolarva/trello/issues/7))
-- User value proposition: Allows users to track task deadlines directly on the card.
-- Technical approach (high-level): Add a date input field in the card edit modal. Save the date in the card object. Update the card interface to display the date and change color if the deadline is approaching or overdue.
-- Success criteria: The user can set a date, view it on the card, and easily identify overdue tasks via visual cues.
+- User value proposition: Grants the ability to assign definitive deadlines to specific tasks directly within the card interface for enhanced time management.
+- Technical approach (high-level): Integrate a standard date-picker within the card editing modal, persisting the selection to the card's data schema. Apply conditional CSS rendering on the main board view to highlight approaching or lapsed deadlines.
+- Success criteria: A user sets a target date on a card, observes the date badge on the board, and sees the color state transition appropriately based on temporal proximity.
 - Estimated effort: Medium
 
 ### 4. Optional Cloud Sync ([#14](https://github.com/pedrolarva/trello/issues/14))
-- User value proposition: Enables using the same board across different devices (mobile and PC) in real-time while maintaining offline functionality.
-- Technical approach (high-level): Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
-- Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
+- User value proposition: Unlocks cross-platform continuity, allowing a single unified board view to persist seamlessly across mobile and desktop environments while retaining full offline capabilities.
+- Technical approach (high-level): Integrate a lightweight BaaS layer (such as Firebase Firestore). Establish a synchronization worker that diffs local state against the cloud store when network connectivity is established, handling edge-case merge conflicts.
+- Success criteria: Any mutation applied on device A automatically propagates to device B (authenticated with the same credentials) within seconds of network availability.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+### 5. Task Checklists
+- User value proposition: Enables users to split complex or multi-step cards into smaller, actionable subtasks without cluttering the main board view with excessive lists.
+- Technical approach (high-level): Modify the card object schema to support an array of subtask objects (containing text and boolean completion). Introduce a dedicated UI segment within the card modal for managing these subtasks dynamically.
+- Success criteria: Users can append, remove, and toggle individual checklist items inside a card, observing a visible progress indicator updating in real-time.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- **Storage Constraints**: The native browser `localStorage` engine inherently limits data to roughly 5MB. Power users hitting this cap, or users routinely clearing browser cache, risk data loss. Investigating an IndexedDB transition is a priority for sustainable growth.
+- **Vanilla Architecture Scalability**: Foregoing modern component frameworks (like React or Vue) risks significant code spaghetti as the application surface area expands. Adopting a strict, modular state-management paradigm is imperative to prevent runaway technical debt.
+- **Mobile Touch Friction**: The HTML5 native drag-and-drop specification is notoriously unreliable on capacitive touchscreens. We anticipate needing either an established polyfill or entirely bespoke touch-event routing to guarantee a fluid mobile experience.
