@@ -26,6 +26,7 @@ The project currently has core functionalities implemented:
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
+  - Task Checklists functionality for breaking down work inside cards.
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
@@ -38,12 +39,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Custom Card Covers to add visual indicators or images to cards.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - Real-time Comments section on cards to foster team collaboration.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
@@ -75,7 +78,25 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Task Checklists
+- User value proposition: Provides the ability to divide complex tasks into smaller, manageable sub-tasks directly inside the card view.
+- Technical approach: Extend the card object structure to include an array of checklist items with boolean completion states. Render dynamic progress bars representing the ratio of completed sub-tasks.
+- Success criteria: Users can add, edit, delete, and toggle checklist items, with the progress accurately reflected on both the expanded and collapsed card views.
+- Estimated effort: Medium
+
+### 6. Real-time Comments
+- User value proposition: Allows team members to discuss specific cards, keeping relevant communication attached to the work context rather than scattered across external tools.
+- Technical approach: Add a comments array to card objects. Implement a simple input form in the card modal to post comments, appending author metadata and timestamps.
+- Success criteria: Users can post comments that appear chronologically under the card description, displaying the author's initials and a relative timestamp.
+- Estimated effort: Medium
+
+### 7. Custom Card Covers
+- User value proposition: Enhance visual organization and aesthetics by allowing image or color covers on cards.
+- Technical approach: Allow uploading or pasting images and selecting colors to store in the card object cover attribute, then rendering on top of the card layout.
+- Success criteria: Users can add covers to cards which display accurately.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
