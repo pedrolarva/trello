@@ -22,6 +22,7 @@ The project currently has core functionalities implemented:
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
+  - Enhance drag and drop accessibility for keyboard users.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
@@ -29,6 +30,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Add support for checklists within cards to track subtasks.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -75,7 +77,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Card Checklists
+- User value proposition: Allows users to break down larger tasks into actionable subtasks directly within a single card.
+- Technical approach (high-level): Add a checklist array property to the card object. Implement a UI within the card modal to manage checklist items, and display completion status on the card face.
+- Success criteria: Users can reliably add and toggle subtasks, and the card correctly displays the completion ratio.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
