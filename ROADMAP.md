@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and highly responsive interface for personal or small-team task management without the need for complex setups, databases, or external backends. Our focus remains heavily on practical, incremental value delivery and keeping the tool lightweight.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The project currently has a solid foundation with core functionalities successfully implemented:
+- Create, edit, and delete lists (boards) dynamically.
+- Create, edit, and delete task cards.
+- Drag and Drop functionality to seamlessly move cards between lists.
+- Data persistence using the browser's `localStorage` for offline access.
+- Responsive mobile-friendly design with horizontal scrolling.
 
 ## Quarterly Roadmap
 
@@ -38,6 +38,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Checklists on cards for sub-tasks.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +76,14 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
+### 5. Checklists on Cards
+- User value proposition: Allows users to break down complex tasks into manageable, trackable sub-tasks directly within a single card.
+- Technical approach (high-level): Extend the card data model in `localStorage` to include an array of checklist items with completion states. Add a checklist UI inside the card modal.
+- Success criteria: Users can add, edit, toggle, and delete checklist items, with a progress bar updating visually.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits to ensure data safety.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Feature Creep: As we add sub-tasks and markdown support, keeping the UI intuitive and performance high will require careful design and refactoring.
