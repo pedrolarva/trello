@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Card Attachments: Allow attaching images or documents to cards using IndexedDB.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +39,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Checklists on Cards: Break down complex cards into smaller subtasks.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -46,6 +48,7 @@ The project currently has core functionalities implemented:
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - Collaborative Editing: Allow multiple users to connect and edit the same board in real-time.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
@@ -75,7 +78,26 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
+### 5. Checklists on Cards
+- User value proposition: Enables users to break down complex cards into smaller, manageable subtasks directly within the card, providing a clearer sense of progress.
+- Technical approach (high-level): Extend the card data structure to include an array of checklist items (text and completion status). Update the card modal UI to render checklist items, allowing users to add, edit, delete, and toggle them.
+- Success criteria: Users can create checklists on a card, toggle subtasks, and see a progress indicator on the front of the card.
+- Estimated effort: Medium
+
+### 6. Card Attachments
+- User value proposition: Allows users to attach relevant images or documents to their task cards, keeping all related context in one place.
+- Technical approach (high-level): Implement file input handling in the card modal to read files as base64 strings or store them via a lightweight local storage mechanism (e.g., IndexedDB since localStorage is too small). Show attachment thumbnails on the card.
+- Success criteria: Users can upload an image attachment to a card and see its preview.
+- Estimated effort: Large
+
+### 7. Collaborative Editing
+- User value proposition: Teams can work together seamlessly without needing to refresh or manually sync changes, avoiding conflicts.
+- Technical approach (high-level): Introduce WebSockets or a real-time event system via the backend to broadcast and receive state updates. Implement operational transformation or CRDTs for resolving simultaneous edits.
+- Success criteria: Changes made by one user instantly appear on another user's screen viewing the same board.
+- Estimated effort: Large
+
 ## Dependencies & Risks - Any blockers or concerns
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Concurrency Conflicts: With cloud sync and real-time collaboration, handling concurrent edits smoothly without losing data is a significant technical challenge requiring robust conflict resolution logic.
