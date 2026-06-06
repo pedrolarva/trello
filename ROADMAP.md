@@ -20,6 +20,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - Keyboard navigation for improved accessibility without using the mouse.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
@@ -38,12 +39,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Board templates for quickly setting up standard workflows (e.g., Agile, Weekly Planner).
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - PWA Integration with Service Workers for robust offline support.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
@@ -75,7 +78,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Board Templates
+- User value proposition: Helps users quickly start with pre-configured boards instead of creating columns manually.
+- Technical approach (high-level): Provide a selection of JSON templates that instantly populate `localStorage` board state upon selection.
+- Success criteria: A user can pick a template and instantly have a populated list structure.
+- Estimated effort: Small
+
+### 6. Progressive Web App (PWA) Offline Mode
+- User value proposition: Gives users a native app feel and guarantees availability regardless of network conditions.
+- Technical approach (high-level): Register a Service Worker to cache core HTML, CSS, and JS assets, and provide a web app manifest for installation.
+- Success criteria: The application loads flawlessly without network connectivity and can be installed on home screens.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
