@@ -3,6 +3,8 @@
 ## Vision & Goals
 The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
 
+We also aim to maintain a robust and scalable architecture, incorporating comprehensive unit testing and automated deployments to guarantee stability for our end users.
+
 ## Current Status
 The project currently has core functionalities implemented:
 - Create, edit, and delete lists (boards).
@@ -10,6 +12,8 @@ The project currently has core functionalities implemented:
 - Drag and Drop functionality to move cards between lists.
 - Data persistence using the browser's `localStorage`.
 - Responsive design with horizontal scrolling.
+- Lightweight component architecture that enables fast rendering.
+- Initial setup for static file serving via Docker.
 
 ## Quarterly Roadmap
 
@@ -22,6 +26,7 @@ The project currently has core functionalities implemented:
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
+  - Implement comprehensive Playwright frontend verification.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
@@ -29,12 +34,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Add card cover images and attachments support.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
 ### Q3: Advanced Features and Customization
 - High priority items (bugs, critical features)
   - [#10](https://github.com/pedrolarva/trello/issues/10) Support for multiple boards.
+  - Board templates for quick project scaffolding.
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
@@ -48,6 +55,7 @@ The project currently has core functionalities implemented:
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
+  - Automated deployment pipelines for static site generation.
 
 ## Feature Details
 
@@ -75,7 +83,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Board Templates
+- User value proposition: Allows users to quickly create new projects using predefined list structures (e.g., Agile, Weekly Planner).
+- Technical approach (high-level): Store template schemas as JSON objects in the codebase. Provide a dropdown menu during board creation to select a template and populate initial lists.
+- Success criteria: User can select a template when creating a board, and the board is immediately populated with the template's predefined lists.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
