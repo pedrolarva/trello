@@ -1,15 +1,14 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+Our primary goal is to deliver a fast, simple, and privacy-focused local-first Kanban board using vanilla web technologies (HTML, CSS, JavaScript). We strive to provide an intuitive task management experience for individuals and small teams, avoiding heavy backends and complex infrastructure. Our core principle is incremental value delivery, ensuring new features enhance productivity without compromising performance or user privacy.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The application currently offers a robust set of core features for task management:
+- Full CRUD (Create, Read, Update, Delete) operations for lists and cards.
+- Intuitive Drag and Drop functionality for reordering and moving cards across lists.
+- Reliable data persistence leveraging the browser's `localStorage` API.
+- A fully responsive design that supports seamless horizontal scrolling across different screen sizes.
 
 ## Quarterly Roadmap
 
@@ -75,7 +74,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Markdown support in card descriptions ([#12](https://github.com/pedrolarva/trello/issues/12))
+- User value proposition: Allows users to format text, add lists, links, and emphasize content within card descriptions.
+- Technical approach (high-level): Integrate a simple markdown parser to convert description text to HTML when rendering the card view, ensuring proper sanitization to avoid XSS.
+- Success criteria: Users can write markdown in the description field and see the formatted output when viewing the card.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
