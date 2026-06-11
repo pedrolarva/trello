@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+Our vision is to build a high-performance, privacy-focused (local-first) web-based Kanban board using only vanilla HTML, CSS, and JavaScript. The objective is to provide a seamless, intuitive, and responsive interface designed for personal and small-team task management. By avoiding complex backend setups, we ensure a fast, robust user experience. Our development strictly emphasizes incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The application is actively working and has essential core features fully functional:
+- Seamless creation, editing, and deletion of lists (representing columns).
+- Creation, editing, and deletion of task cards.
+- Interactive Drag and Drop functionality for moving cards across lists.
+- Reliable data persistence implemented via the browser's `localStorage`.
+- A fully responsive interface that supports wide boards with horizontal scrolling.
 
 ## Quarterly Roadmap
 
@@ -22,6 +22,7 @@ The project currently has core functionalities implemented:
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
+  - Improve keyboard navigation for accessibility.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
@@ -29,6 +30,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Bulk actions for cards (e.g. moving or deleting multiple at once).
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +40,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Custom backgrounds for boards.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -48,6 +51,7 @@ The project currently has core functionalities implemented:
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
+  - Basic API support for community plugins.
 
 ## Feature Details
 
@@ -75,7 +79,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
+### 5. API Support
+- User value proposition: Allows the community to build custom plugins and integrations.
+- Technical approach (high-level): Expose core data models and operations through an extensible JavaScript API structure.
+- Success criteria: External scripts can read and manipulate board state safely.
+- Estimated effort: Large
+
 ## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- LocalStorage Limitations: The standard 5MB storage limit is a constraint; furthermore, data may be wiped by clearing browser history. Future transitions to IndexedDB are under consideration.
+- Vanilla JS Scalability: Relying strictly on vanilla JavaScript could lead to code maintenance challenges as complexity increases. Emphasizing a clean architectural pattern is mandatory.
+- Mobile Compatibility: HTML5 Drag and Drop behaves inconsistently across mobile browsers, requiring dedicated testing and possibly fallback polyfills for touch interactions.
