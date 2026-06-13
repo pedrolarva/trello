@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Subtask Checklists functionality to break down complex cards.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +39,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Card Member Assignment functionality to delegate tasks to individuals.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Subtask Checklists
+- User value proposition: Enables users to break down larger tasks into smaller, manageable subtasks directly within a single card, improving organization and trackability.
+- Technical approach (high-level): Add an array of checklist items to the card object in state. Update the UI modal to add, toggle, and remove subtasks. Show a progress indicator (e.g., "2/5") on the card summary view.
+- Success criteria: Users can add multiple checklist items to a card, toggle their completion state, and see overall progress from the main board view.
+- Estimated effort: Medium
+
+### 6. Card Member Assignment
+- User value proposition: Allows teams to clearly see who is responsible for which task by assigning members to cards.
+- Technical approach (high-level): Add an array of member IDs to the card object. Create a UI element in the card edit modal to select from a list of predefined members. Render member avatars or initials on the card.
+- Success criteria: Users can assign and unassign members from a card and easily view assigned members on the board.
+- Estimated effort: Small
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
