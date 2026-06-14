@@ -20,12 +20,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - Card templates for quick task creation.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
   - [#6](https://github.com/pedrolarva/trello/issues/6) Export/Import data (JSON) functionality for backups.
+  - List limits (WIP limits) to improve workflow focus.
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
@@ -38,6 +40,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Custom board backgrounds for enhanced personalization.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -48,6 +51,7 @@ The project currently has core functionalities implemented:
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
+  - Comprehensive accessibility (a11y) audit and ARIA attribute integration.
 
 ## Feature Details
 
@@ -74,6 +78,18 @@ The project currently has core functionalities implemented:
 - Technical approach (high-level): Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
+
+### 5. List Limits (WIP Limits)
+- User value proposition: Encourages users to limit their work-in-progress, helping them focus on finishing current tasks before starting new ones, which improves overall productivity.
+- Technical approach (high-level): Add a configuration field to lists to set a maximum number of allowed cards. Implement validation logic during drag-and-drop and card creation to warn the user or block the action if the limit is exceeded.
+- Success criteria: The list visually indicates when it reaches its maximum capacity, and users are notified when attempting to exceed the predefined limit.
+- Estimated effort: Medium
+
+### 6. Card Templates
+- User value proposition: Accelerates the creation of common, repetitive tasks by allowing users to save and reuse predefined card structures, complete with standard descriptions and checklists.
+- Technical approach (high-level): Create a new dedicated UI for managing saved card templates. Provide a "Create from Template" action when adding new cards that auto-fills the standard fields.
+- Success criteria: Users can save a card as a template and subsequently generate new cards populated with that template's content with just a single click.
+- Estimated effort: Medium
 
 ## Dependencies & Risks - Any blockers or concerns
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
