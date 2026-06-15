@@ -20,6 +20,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - Accessibility improvements (WCAG compliance, ARIA attributes).
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
@@ -29,6 +30,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Board backgrounds (custom colors or image URLs).
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,6 +40,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Card checklists for subtasks.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +78,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Card Checklists
+- User value proposition: Allows users to break down a card's task into smaller, actionable subtasks.
+- Technical approach (high-level): Add an array of checklist items (each with a boolean `completed` state and text string) to the card object in state. Update the UI to render checklists within the card modal, including an progress bar.
+- Success criteria: Users can add, toggle, and delete checklist items within a card, and the completion percentage is visible on the card cover.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
