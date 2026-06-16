@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - Recurring tasks support for daily and weekly repetitions.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -38,12 +39,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Board templates for common workflows (e.g., Agile, Personal Task List).
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - Offline-first Service Worker implementation to ensure app loads quickly when network is disconnected.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
@@ -75,7 +78,25 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Recurring Tasks
+- User value proposition: Saves time for users by automating the creation of tasks that happen on a regular schedule.
+- Technical approach (high-level): Implement a cron-like scheduler check within the app initialization that reads rules stored in `localStorage` and generates new cards for rules that have triggered since last open.
+- Success criteria: A user can configure a card to repeat daily, and the system automatically creates a duplicate on the designated days.
+- Estimated effort: Medium
+
+### 6. Board Templates
+- User value proposition: Speeds up project setup by providing out-of-the-box column structures for different types of work (e.g., Agile Sprint, Weekly Planner).
+- Technical approach (high-level): Define predefined board configurations in a constants file and provide a UI to select and instantiate them during board creation.
+- Success criteria: A user can select a "Weekly Planner" template and instantly get a board pre-populated with Monday-Sunday columns.
+- Estimated effort: Small
+
+### 7. Offline-first Service Worker
+- User value proposition: Ensures the user can load the Kanban board even when entirely offline, offering a robust desktop-like experience.
+- Technical approach (high-level): Register a service worker to cache the static HTML, CSS, and JS assets using the Cache API.
+- Success criteria: The application successfully loads and functions fully without any internet connection.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
