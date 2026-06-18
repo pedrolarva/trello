@@ -1,15 +1,15 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+Our primary vision for this project is to deliver a highly performant, simple, and strictly privacy-focused (local-first) web-based Kanban board built solely using vanilla HTML, CSS, and JavaScript. We aim to empower users with an intuitive, fluid, and responsive task management interface tailored for personal productivity or small-team collaboration, completely eliminating the need for complex configurations, external databases, or backend servers. A core tenet of our strategy is maintaining a focus on continuous, incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
-- Create, edit, and delete lists (boards).
-- Create, edit, and delete cards.
-- Drag and Drop functionality to move cards between lists.
-- Data persistence using the browser's `localStorage`.
-- Responsive design with horizontal scrolling.
+The project has successfully established a robust foundation, with the following core functionalities fully implemented and operational:
+- Seamless creation, modification, and deletion of lists (representing board columns).
+- Intuitive card management, allowing users to create, edit, and remove task cards.
+- Fluid Drag and Drop interactions for reordering cards and moving them across lists.
+- Reliable, local-first data persistence leveraging the browser's native `localStorage` API.
+- A fully responsive, mobile-friendly design featuring horizontal scrolling for extensive boards.
 
 ## Quarterly Roadmap
 
@@ -38,6 +38,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - Subtask Checklists on Cards (Allow users to break down tasks into sub-items).
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
-- LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
-- Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
-- Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+### 5. Subtask Checklists
+- User value proposition: Enables users to break down complex tasks into smaller, manageable sub-items directly on the card, tracking progress more Granularly.
+- Technical approach (high-level): Introduce an array of checklist items to the card object in `localStorage`. Update the card modal UI to render checklist inputs, checkboxes, and a progress bar. Ensure state updates are saved when checkboxes are toggled.
+- Success criteria: Users can add, remove, and check/uncheck subtasks on a card, with visual indicators of overall completion progress.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- LocalStorage Limitations: Browser local storage is subject to strict size constraints (typically around 5MB) and is vulnerable to accidental deletion if a user clears their browser data. Exploring alternatives like IndexedDB may be necessary for supporting extensive datasets.
+- Vanilla JS Scalability: As the application continues to grow, maintaining a completely framework-less architecture presents a risk of technical debt. Without a robust, declarative rendering engine, our DOM manipulation and state management logic could become excessively complex. Establishing a strict architectural pattern is essential.
+- Mobile Compatibility: Leveraging native HTML5 Drag and Drop APIs often yields inconsistent or broken behaviors on touch-based mobile devices. We anticipate needing to implement robust polyfills or engineer custom touch-event handling to ensure a seamless mobile experience.
