@@ -22,6 +22,7 @@ The project currently has core functionalities implemented:
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
+  - Offline Service Worker Support to fully realize the local-first goal.
 
 ### Q2: Data Management and Productivity
 - High priority items (bugs, critical features)
@@ -29,6 +30,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - List Copying feature for quick duplication of boards as templates.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -74,6 +76,18 @@ The project currently has core functionalities implemented:
 - Technical approach (high-level): Utilize a BaaS (Backend as a Service) like Firebase Firestore. Sync local data with the cloud when an internet connection is available, using conflict resolution strategies.
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
+
+### 5. Offline Service Worker Support
+- User value proposition: Ensures the application loads and functions seamlessly even when the user has completely lost internet connection or is on a flaky network.
+- Technical approach (high-level): Register a service worker and cache static assets (HTML, CSS, JS) using the Cache API. Serve cached assets when offline.
+- Success criteria: The application can be refreshed and operated normally without any active internet connection.
+- Estimated effort: Medium
+
+### 6. List Copying
+- User value proposition: Allows users to quickly duplicate entire lists (boards) to use as templates.
+- Technical approach (high-level): Implement a "Copy List" option in the list menu. Duplicate the list object and all its associated cards in `localStorage` with a new ID.
+- Success criteria: The user can successfully duplicate an entire list, and the new list functions independently.
+- Estimated effort: Small
 
 ## Dependencies & Risks - Any blockers or concerns
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
