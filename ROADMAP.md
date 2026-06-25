@@ -38,6 +38,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Subtasks (checklists) within cards.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Subtasks (checklists) within cards ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Allows users to break down complex tasks into smaller, manageable subtasks with checkboxes.
+- Technical approach (high-level): Extend the card data model in `localStorage` to include an array of subtasks (objects with title and completed status). Update the card edit modal UI to allow adding, toggling, and removing subtasks, and show a progress indicator (e.g., "2/5") on the main card view.
+- Success criteria: Users can successfully add, check, uncheck, and delete subtasks inside a card, with the state persisting across reloads.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
