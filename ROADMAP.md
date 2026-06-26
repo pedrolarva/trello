@@ -1,17 +1,21 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+Our goal is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+- Establish a completely serverless workflow option for privacy-conscious users.
+- Deliver an uncompromisingly fast, native-feeling drag-and-drop experience.
 
 ## Current Status
-The project currently has core functionalities implemented:
+The project currently has core functionalities implemented and is fully functional for daily use:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
 - Drag and Drop functionality to move cards between lists.
 - Data persistence using the browser's `localStorage`.
 - Responsive design with horizontal scrolling.
+- Escaping mechanism for basic HTML sanitization during rendering.
 
 ## Quarterly Roadmap
+Below is the planned feature schedule, organized by quarter to prioritize continuous delivery:
 
 ### Q1: User Experience (UX) and Stability
 - High priority items (bugs, critical features)
@@ -38,6 +42,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Subtasks for cards to break down complex tasks.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -46,10 +51,12 @@ The project currently has core functionalities implemented:
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
+  - [#18](https://github.com/pedrolarva/trello/issues/18) Real-time collaboration capabilities using WebSockets.
 - Low priority items (technical debt, optimizations)
   - [#16](https://github.com/pedrolarva/trello/issues/16) Internationalization (i18n) to support multiple languages.
 
 ## Feature Details
+This section expands on the major upcoming features with concrete details on implementation and goals.
 
 ### 1. Export/Import Data ([#6](https://github.com/pedrolarva/trello/issues/6))
 - User value proposition: Allows users to back up their boards and transfer data between browsers or devices manually, ensuring they don't lose information if `localStorage` is cleared.
@@ -75,7 +82,20 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Subtasks ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Allows users to break down complex tasks into smaller, manageable checklist items within a single card.
+- Technical approach (high-level): Add a subtasks array to the card object in localStorage. Implement a subtask checklist UI in the card modal to add, toggle, and delete subtasks. Update the card front to show a progress indicator (e.g., "2/5").
+- Success criteria: The user can create subtasks inside a card, check them off, and see the completion progress on the main board view.
+- Estimated effort: Medium
+
+### 6. Real-time Collaboration ([#18](https://github.com/pedrolarva/trello/issues/18))
+- User value proposition: Allows multiple team members to edit and view board updates simultaneously without refreshing.
+- Technical approach (high-level): Introduce WebSockets to broadcast board updates (like card moves and edits) to all connected clients instantly, while keeping the local-first structure intact as a fallback.
+- Success criteria: A user dragging a card on one screen instantly updates the card position on another user's screen in the same session.
+- Estimated effort: Large
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Concurrency Conflicts: Introducing real-time collaboration features presents a risk of edit conflicts if two users modify the same element simultaneously.
