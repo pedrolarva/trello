@@ -38,12 +38,14 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Board templates for quick setup (e.g., Agile, Kanban, Personal).
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
   - [#14](https://github.com/pedrolarva/trello/issues/14) Optional Cloud Sync integration using services like Firebase or Supabase to allow multi-device usage.
+  - [#18](https://github.com/pedrolarva/trello/issues/18) Real-time collaborative editing using WebSockets.
 - Medium priority items (enhancements, improvements)
   - [#15](https://github.com/pedrolarva/trello/issues/15) Simple activity log / history.
 - Low priority items (technical debt, optimizations)
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Board Templates ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Enables users to quickly start a new project by providing pre-configured board layouts (e.g., Agile, Kanban, Personal).
+- Technical approach (high-level): Create predefined JSON configurations for common workflows and allow users to select one when creating a new board.
+- Success criteria: Users can successfully create a new board from a template and see the pre-populated lists.
+- Estimated effort: Medium
+
+### 6. Real-time Collaborative Editing ([#18](https://github.com/pedrolarva/trello/issues/18))
+- User value proposition: Allows multiple users to work on the same board simultaneously without refreshing the page.
+- Technical approach (high-level): Implement WebSocket connections to broadcast changes (card moves, updates) to connected clients in real-time.
+- Success criteria: When one user moves or edits a card, all other users viewing the same board see the changes immediately.
+- Estimated effort: Large
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
