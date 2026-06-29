@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Archive functionality for cards and lists to hide them without deleting.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -40,6 +41,7 @@ The project currently has core functionalities implemented:
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
+  - [#18](https://github.com/pedrolarva/trello/issues/18) Rich text formatting toolbar for card descriptions.
 
 ### Q4: Synchronization and Expansion
 - High priority items (bugs, critical features)
@@ -75,7 +77,19 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Archive Functionality ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Users can archive cards and lists to declutter their boards without losing historical data.
+- Technical approach (high-level): Add an `archived` boolean property to cards and lists in the state. Filter out archived items in the main rendering logic. Create a separate view or modal to restore or permanently delete archived items.
+- Success criteria: Archived items are hidden from the active board but can be viewed and restored from the archive section.
+- Estimated effort: Medium
+
+### 6. Rich Text Formatting ([#18](https://github.com/pedrolarva/trello/issues/18))
+- User value proposition: Users can easily format card descriptions without needing to remember Markdown syntax.
+- Technical approach (high-level): Integrate a lightweight rich text editor or build a simple toolbar that wraps selected text in Markdown syntax (e.g., bold, italic).
+- Success criteria: Users can format text using buttons in the UI and the results render correctly on the card.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
