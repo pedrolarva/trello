@@ -1,10 +1,10 @@
 # Roadmap
 
 ## Vision & Goals
-The goal of this project is to provide a simple, fast, and privacy-focused (local-first) web-based Kanban board built entirely with vanilla HTML, CSS, and JavaScript. It aims to offer an intuitive and responsive interface for personal or small-team task management without the need for complex setups or backends. Focus is on incremental value delivery.
+The primary vision and goal of this project is to deliver a simple, fast, and privacy-centric (local-first) web-based Kanban board built strictly with vanilla HTML, CSS, and JavaScript. It aims to provide an intuitive, responsive interface for personal or small-team task management without requiring any complex setups or backend infrastructure. Our core focus is on consistent, incremental value delivery.
 
 ## Current Status
-The project currently has core functionalities implemented:
+As of the current phase, the project has successfully implemented the following core functionalities:
 - Create, edit, and delete lists (boards).
 - Create, edit, and delete cards.
 - Drag and Drop functionality to move cards between lists.
@@ -29,6 +29,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#7](https://github.com/pedrolarva/trello/issues/7) Due dates on cards with visual alerts for overdue tasks.
   - [#8](https://github.com/pedrolarva/trello/issues/8) Search and filter cards by text or label.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Add subtask checklists to cards.
 - Low priority items (technical debt, optimizations)
   - [#9](https://github.com/pedrolarva/trello/issues/9) DOM manipulation optimization for better performance on large boards.
 
@@ -75,7 +76,14 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Checklists for Subtasks ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Allows users to break down larger tasks into actionable subtasks directly on a single card.
+- Technical approach (high-level): Expand the local storage schema for cards to include a checklists array. Render a new UI section within the card edit modal to add, toggle, and remove subtasks.
+- Success criteria: Users can add subtasks, check them off, and a progress indicator updates correctly.
+- Estimated effort: Medium
+
+## Dependencies & Risks
+- Security and Data Privacy: If cloud synchronization is implemented, we must ensure that user data remains secure and private.
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
