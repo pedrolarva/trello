@@ -38,6 +38,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#11](https://github.com/pedrolarva/trello/issues/11) Theme customization (Dark Mode and color themes).
   - [#12](https://github.com/pedrolarva/trello/issues/12) Markdown support in card descriptions.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Checklists on cards for sub-task management.
 - Low priority items (technical debt, optimizations)
   - [#13](https://github.com/pedrolarva/trello/issues/13) Smoother animations when adding or moving items.
 
@@ -75,7 +76,13 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Checklists on Cards ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Helps users break down larger tasks into manageable sub-tasks directly within a single card.
+- Technical approach (high-level): Add an array of checklist objects (with title and checked status) to the card data model in `localStorage`. Create UI within the card edit modal to add, check, and remove sub-tasks.
+- Success criteria: The user can create multiple checklist items, toggle their completion status, and see a progress bar indicating completion percentage.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
