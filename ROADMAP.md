@@ -20,6 +20,7 @@ The project currently has core functionalities implemented:
 - Medium priority items (enhancements, improvements)
   - [#3](https://github.com/pedrolarva/trello/issues/3) Colored labels/tags for cards.
   - [#4](https://github.com/pedrolarva/trello/issues/4) Automatic sorting of cards within a list.
+  - [#17](https://github.com/pedrolarva/trello/issues/17) Keyboard Navigation for better accessibility.
 - Low priority items (technical debt, optimizations)
   - [#5](https://github.com/pedrolarva/trello/issues/5) CSS refactoring for better use of variables and maintainability.
 
@@ -75,7 +76,14 @@ The project currently has core functionalities implemented:
 - Success criteria: Data is automatically and correctly synced between two different devices logged into the same account.
 - Estimated effort: Large
 
-## Dependencies & Risks - Any blockers or concerns
+### 5. Keyboard Navigation ([#17](https://github.com/pedrolarva/trello/issues/17))
+- User value proposition: Enables power users and those with accessibility needs to navigate and manage boards without a mouse.
+- Technical approach (high-level): Implement ARIA attributes and `keydown` event listeners on the document to handle arrow key navigation between lists and cards.
+- Success criteria: A user can move between cards, edit them, and move them between lists using only the keyboard.
+- Estimated effort: Medium
+
+## Dependencies & Risks
 - LocalStorage Limitations: Browser local storage has a size limit (typically 5MB) and can be accidentally wiped by the user when clearing browser data. We may need to investigate IndexedDB for larger limits.
 - Vanilla JS Scalability: Maintaining the project without frameworks might make the code complex and harder to maintain as the application grows (technical debt). A clear architecture pattern will be required to manage state effectively.
 - Mobile Compatibility: Native HTML5 Drag and Drop features can be inconsistent on mobile devices, potentially requiring polyfills or significant custom touch event handling.
+- Browser Extension Interference: Certain browser extensions (e.g., ad blockers, privacy managers) might interfere with `localStorage` or DOM manipulation, causing unpredictable behavior.
